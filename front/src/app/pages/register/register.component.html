@@ -1,0 +1,63 @@
+<app-center-card title="Register">
+  <form #f="ngForm" fxLayout="column" autocomplete="off" (ngSubmit)="onSubmit()"
+        [appIdentical]="['password','passwordRep']">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" name="email" autocomplete="username"
+             email required matInput  ngModel #email="ngModel"
+      />
+      <mat-error *ngIf="email.touched && email.hasError('required');">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="email.touched && email.hasError('email');">
+        Enter a correct email
+      </mat-error>
+      <mat-error *ngIf="email.touched && email.hasError('serverError');">
+        {{ email.getError('serverError')}};
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input type="password" name="password" autocomplete="new-password"
+             required matInput ngModel #password="ngModel"
+      />
+      <mat-error *ngIf="password.touched && password.hasError('required');">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password Repeat</mat-label>
+      <input type="password" name="passwordRep" autocomplete="new-password"
+             required matInput ngModel #passwordRep="ngModel"
+      />
+      <mat-error *ngIf="passwordRep.touched && passwordRep.hasError('required');">
+        Enter a repeated password
+      </mat-error>
+      <small
+        *ngIf="passwordRep.touched && f.errors?.['identical']"
+        class="form-text invalid-form-text" style="color:red"
+      >
+        Passwords should match
+      </small>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Display Name</mat-label>
+      <input type="text" name="displayName"
+             required matInput ngModel #displayName="ngModel"
+      />
+      <mat-error *ngIf="displayName.touched && displayName.hasError('required');">
+        Display Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Image</mat-label>
+      <app-file-input name="avatar" ngModel></app-file-input>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">
+      REGISTER
+    </button>
+  </form>
+</app-center-card>
+
