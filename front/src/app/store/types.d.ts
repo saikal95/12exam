@@ -1,9 +1,9 @@
-import { Cocktail } from '../models/cocktail.model';
+import { Cocktail } from '../models/photo.model';
 import { LoginError, RegisterError, User } from '../models/user.model';
 
 
 export type CocktailsState = {
-  products: Cocktail[],
+  cocktails: Cocktail[],
   fetchLoading: boolean,
   fetchError: null | string,
   createLoading: boolean,

@@ -1,18 +1,20 @@
-import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
-import { AppState } from '../store/types';
-import { Observable, Subscription } from 'rxjs';
-import { User } from '../models/user.model';
-import { Store } from '@ngrx/store';
+import {Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {AppState} from "../store/types";
+import {Observable, Subscription} from "rxjs";
+import {User} from "../models/user.model";
 
 @Directive({
   selector: '[appHasRoles]'
 })
-export class HasRolesDirective implements OnInit, OnDestroy {
-  user: Observable<null | User>;
+export class HasRolesDirective implements  OnInit, OnDestroy {
+  user: Observable<User | null>;
   userSub!: Subscription;
 
-  @Input('appHasRoles') roles!: string[];
-  @Input('appHasRolesElse') elseTemplate?: TemplateRef<any>;
+  @Input('appHasRoles') roles!: {
+    role: string[],
+    published?: boolean,
+  };
 
   constructor(
     private templateRef: TemplateRef<any>,
@@ -26,16 +28,15 @@ export class HasRolesDirective implements OnInit, OnDestroy {
     this.userSub = this.user.subscribe(user => {
       this.viewContainer.clear();
 
-      if (user && this.roles.includes(user.role)) {
-        this.viewContainer.createEmbeddedView(this.templateRef);
-      } else if (this.elseTemplate) {
-        this.viewContainer.createEmbeddedView(this.elseTemplate);
-      }
-    });
+      // if(user?.role === 'admin'){
+      //   this.viewContainer.createEmbeddedView(this.templateRef);
+      // } else if((user?.role === 'user' && this.roles.published === true) || (!user && this.roles.published === true)){
+      //   this.viewContainer.createEmbeddedView(this.templateRef);
+      // }
+    })
   }
 
   ngOnDestroy() {
     this.userSub.unsubscribe();
   }
-
 }

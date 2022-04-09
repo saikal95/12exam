@@ -27,6 +27,8 @@ router.post('/',async (req, res, next) => {
 
   try {
 
+    console.log(req.body.user);
+
       if (!req.body.email || !req.body.password ||!req.body.displayName) {
         return res.status(400).send({message: 'Email, password or displayName are required'});
       }
@@ -36,22 +38,16 @@ router.post('/',async (req, res, next) => {
       password: req.body.password,
       displayName: req.body.displayName,
       token: req.token,
-      role: req.body.user,
-
     };
+
+      console.log(userData);
 
     if (req.file) {
       userData.avatar = req.file.filename;
     }
-
     const user = new User(req.body);
-
     user.generateToken();
-
     await user.save();
-
-
-
     return res.send(user);
 
   } catch (error) {
@@ -67,7 +63,6 @@ router.post('/',async (req, res, next) => {
 router.post('/sessions', async (req, res) => {
 
   const user = await User.findOne({email: req.body.email});
-  console.log(user);
   if (!user) {
     return res.status(400).send({error: 'Email not found'});
   }
@@ -126,7 +121,6 @@ router.post('/facebookLogin', async (req, res, next) => {
 
     let user = await User.findOne({facebookId: req.body.id});
 
-    console.log(user);
     if (!user) {
       user = new User({
         email: req.body.email,

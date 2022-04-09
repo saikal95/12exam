@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require("mongoose");
-const cocktails = require('./app/cocktails');
+const photo = require('./app/photo');
 const users = require('./app/user');
 const config = require('./config');
 const app = express();
@@ -24,7 +24,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/user', users);
-app.use('/cocktails', cocktails);
+app.use('/photo', photo);
 
 
 const run = async () => {

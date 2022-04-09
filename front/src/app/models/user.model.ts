@@ -1,16 +1,13 @@
 export interface User {
   _id: string,
   email: string,
-  avatar?: string,
   displayName: string,
   token: string,
-  role: string,
 }
 
 export interface RegisterUserData {
   email: string,
   password: string,
-  avatar: File | null,
   displayName: string,
 }
 
