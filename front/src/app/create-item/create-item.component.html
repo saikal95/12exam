@@ -1,0 +1,27 @@
+<mat-label>Create Item</mat-label>
+<mat-card>
+  <mat-card-content>
+    <div class="error" *ngIf="error | async">
+      {{ error | async }}
+    </div>
+    <form (ngSubmit)="onSubmitPhotos()" #f="ngForm" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input name="title" required matInput ngModel/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Image</mat-label>
+        <app-file-input name="image" ngModel></app-file-input>
+      </mat-form-field>
+      <div>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+        >SAVE</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -6,8 +6,8 @@ import {PicsComponent} from "./pics/pics.component";
 import {CreateItemComponent} from "./create-item/create-item.component";
 
 const routes: Routes = [
-  {path: 'create', component: CreateItemComponent },
   {path: '', component: PicsComponent},
+  {path: 'create', component: CreateItemComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
 ];

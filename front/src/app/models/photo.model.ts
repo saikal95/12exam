@@ -11,7 +11,6 @@ export interface PhotoData {
   [key: string]: any,
   title: string,
   image: string,
-  author: string,
 }
 
 export interface ApiPhotoData {

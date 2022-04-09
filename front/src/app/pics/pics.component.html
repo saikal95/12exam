@@ -1,0 +1,30 @@
+<div fxLayout="row" fxLayoutAlign="space-between flex-start">
+</div>
+<mat-label style="font-weight: 600; font-size: 25px; padding-bottom: 30px">  Gallery Content </mat-label>
+<div class="error" *ngIf="error | async">
+  {{ error | async }}
+</div>
+<div fxLayout="row wrap" fxLayoutGap="16px grid">
+  <div
+    fxFlex.xs="100%"
+    fxFlex.sm="50%"
+    fxFlex.lt-lg="33%"
+    fxFlex="25%"
+    *ngFor="let photo of photos | async"
+  >
+    <mat-card>
+        <mat-card-title>{{ photo.title }}</mat-card-title>
+        <img
+          [src]="photo.image | image"
+          [alt]="'Photo of ' + photo.title"
+          mat-card-image
+        />
+        <mat-card-title>
+          {{photo.author}}
+        </mat-card-title>
+
+    </mat-card>
+  </div>
+</div>
+
+
