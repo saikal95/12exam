@@ -32,13 +32,13 @@
           <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+          <a mat-button routerLink="/create">Create your Item </a>
           <button mat-menu-item disabled>{{ (user | async)?.displayName }}</button>
           <img src="{{(user | async)?.displayName}}" alt="">
           <button mat-menu-item>Profile</button>
           <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
       </nav>
-      <!-- </ng-template> -->
     </mat-toolbar>
     <div class="content">
       <ng-content></ng-content>

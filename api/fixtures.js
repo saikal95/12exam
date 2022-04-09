@@ -17,7 +17,6 @@ const run = async () => {
     {
       email:'sircle98@mail.ru',
       password: '1234789',
-      avatar: 'user.png',
       displayName: 'Saiko',
       token: nanoid(),
       role: 'user',
@@ -25,7 +24,6 @@ const run = async () => {
     {
     email:'admin@shop.com',
     password: '12345',
-    avatar: 'admin.jpeg',
     displayName: 'Admin',
     token: nanoid(),
     role:'admin',
@@ -33,16 +31,19 @@ const run = async () => {
 
   const [ ] = await  Photo.create({
       title: 'Bloody Mary',
-      image: 'b52.png',
+      image: 'bm.jpg',
+      author: 'Saiko',
   },
     {
       title: 'Pina Collada',
       image: 'pc.jpg',
+      author: 'Admin',
 
     },
     {
       title: 'B52',
       image: 'b52.jpg',
+      author: 'John'
 
     });
 

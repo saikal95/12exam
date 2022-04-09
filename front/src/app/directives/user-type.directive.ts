@@ -36,3 +36,4 @@ export class UserTypeDirective implements OnInit, OnDestroy {
     this.userSub.unsubscribe();
   }
 }
+

@@ -10,7 +10,7 @@ const PhotoSchema = new mongoose.Schema({
     unique: true,
   },
   image: String,
-
+  author: String,
 });
 
 const Photo = mongoose.model('Photo', PhotoSchema);

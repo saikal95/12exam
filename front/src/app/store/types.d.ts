@@ -1,9 +1,9 @@
-import { Cocktail } from '../models/photo.model';
+import { Photo} from '../models/photo.model';
 import { LoginError, RegisterError, User } from '../models/user.model';
 
 
-export type CocktailsState = {
-  cocktails: Cocktail[],
+export type PhotoState = {
+  photos: Photo[],
   fetchLoading: boolean,
   fetchError: null | string,
   createLoading: boolean,
@@ -19,6 +19,6 @@ export type UsersState = {
 }
 
 export type AppState = {
-  cocktails: CocktailsState ,
+  photos: PhotoState,
   users: UsersState,
 }

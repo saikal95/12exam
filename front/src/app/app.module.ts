@@ -30,7 +30,6 @@ import {usersReducer} from "./store/users.reducer";
 import {UsersEffects} from "./store/users.effects";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthInterceptor} from "./auth.interceptor";
-import {HasRolesDirective} from "./directives/has-roles.directive";
 import {UserTypeDirective} from "./directives/user-type.directive";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {FileInputComponent} from "./ui/file-input/file-input.component";
@@ -38,6 +37,9 @@ import {ImagePipe} from "./pipes/image.pipe";
 import {MatSelectModule} from "@angular/material/select";
 import { PicsComponent } from './pics/pics.component';
 import { AddPicsComponent } from './add-pics/add-pics.component';
+import {photoReducer} from "./store/photo.reducer";
+import {PhotoEffects} from "./store/photo.effects";
+import { CreateItemComponent } from './create-item/create-item.component';
 
 const  socialConfig: SocialAuthServiceConfig = {
   autoLogin: false,
@@ -62,9 +64,10 @@ const metaReducers: MetaReducer[] = [localStorageSyncReducer];
 
 const reducers = {
   users: usersReducer,
+  photos: photoReducer,
 };
 
-const effects = [ UsersEffects];
+const effects = [ UsersEffects, PhotoEffects ];
 
 
 
@@ -76,12 +79,12 @@ const effects = [ UsersEffects];
     RegisterComponent,
     ValidateIdenticalDirective,
     CenterCardComponent,
-    HasRolesDirective,
     UserTypeDirective,
     FileInputComponent,
     ImagePipe,
     PicsComponent,
     AddPicsComponent,
+    CreateItemComponent,
   ],
   imports: [
     BrowserModule,
